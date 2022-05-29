@@ -20,6 +20,8 @@
                         {% else %}
                             <textarea class="form-control" name="text" id="exampleFormControlTextarea1" rows="8">{{original}}</textarea>
                         {% endif %}
+                        <label for="customRange1" class="form-label">Summarized length</label>
+                        <input type="range" name="strength" class="form-range" id="customRange1" min="0" max="20">
                         <button type="submit" class="btn btn-primary mb-3">Summarize Text!</button>   
                     </div>
                     <div class="col">

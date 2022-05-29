@@ -1,0 +1,5 @@
+venv/
+test.txt
+sentence-transformers_all-mpnet-base-v2/
+nltk_data/
+__pycache__/
