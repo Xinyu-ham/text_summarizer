@@ -1,6 +1,5 @@
 import enum
 from sentence_transformers import SentenceTransformer
-from sklearn.metrics.pairwise import cosine_similarity
 from nltk.tokenize import sent_tokenize
 import numpy as np
 
@@ -20,7 +19,7 @@ class Summarizer:
         self.strength = strength
 
     def _embed_sentences(self):
-        return np.array([self.model.encode(sent) for sent in self.sentences])
+        return np.array([self.model.encode(sent, convert_to_numpy=True) for sent in self.sentences])
 
     def _pagerank_iter(self, page_rank, similarity, damp):
         n = len(page_rank)
@@ -42,8 +41,7 @@ class Summarizer:
     def summarize(self, iter=200, damp=0.10):
         k_output = max(int(self.strength * len(self.sentences)), 1)
         embeded = self._embed_sentences()
-        similarity_matrix = cosine_similarity(embeded)
-        n = len(similarity_matrix)
+        similarity_matrix = np.matmul(embeded, embeded.T)
         page_rank = [1 for _ in similarity_matrix]
 
         for _ in range(iter):
