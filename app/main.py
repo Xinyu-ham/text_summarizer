@@ -16,5 +16,5 @@ def homepage():
         summ.set_strength(strength)
         return render_template("index.html", output=summ.summarize(), original=text)
 
-if __name__ == "__main__":
-    app.run(debug=True)
+# if __name__ == "__main__":
+#     app.run(debug=True)
