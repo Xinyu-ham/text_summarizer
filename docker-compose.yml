@@ -1,0 +1,7 @@
+services:
+  summarizer:
+    build: .
+    ports:
+      - "5000:8080"
+    environment:
+      - MODEL_NAME=all-MiniLM-L6-v2

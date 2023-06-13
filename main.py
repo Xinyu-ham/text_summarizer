@@ -1,8 +1,11 @@
 from flask import Flask, render_template, request
 from summarizer.util import Summarizer 
+import os
 
 app = Flask(__name__)
-summ = Summarizer()
+model_path = os.environ.get('MODEL_NAME', 'sentence-transformers_all-mpnet-base-v2')
+summ = Summarizer(model_path=model_path)
+print('Model loaded')
 
 @app.route("/", methods=['GET', 'POST'])
 def homepage():
