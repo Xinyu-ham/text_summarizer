@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request
-from summarizer.util import Summarizer
+from summarizer.util import Summarizer 
 
 app = Flask(__name__)
 summ = Summarizer()
@@ -15,6 +15,6 @@ def homepage():
         summ.fit(text)
         summ.set_strength(strength)
         return render_template("index.html", output=summ.summarize(), original=text)
-
-# if __name__ == "__main__":
-#     app.run(debug=True)
+ 
+if __name__ == "__main__":
+    app.run(debug=True)
